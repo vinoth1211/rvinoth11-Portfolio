@@ -46,10 +46,38 @@
   letter-spacing: 1.5px;
 }
 
+/* Tablet styles */
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 50px 5%;
+  }
+  .text h2 {
+    font-size: 70px;
+  }
+  .text p {
+    font-size: 35px;
+  }
+  .link a {
+    font-size: 26px;
+  }
+}
+
+/* Mobile landscape */
 @media screen and (max-width: 830px) {
   .container {
     flex-direction: column;
     gap: 23px;
+    padding: 40px 5%;
+  }
+
+  .text h2 {
+    font-size: 60px;
+    text-align: center;
+  }
+
+  .text p {
+    font-size: 30px;
+    text-align: center;
   }
 
   .text {
@@ -60,5 +88,47 @@
 
   .links {
     align-items: center;
+  }
+
+  .link a {
+    font-size: 24px;
+  }
+}
+
+/* Mobile portrait */
+@media screen and (max-width: 640px) {
+  .container {
+    padding: 30px 3%;
+  }
+  .text h2 {
+    font-size: 48px;
+  }
+  .text p {
+    font-size: 24px;
+  }
+  .link a {
+    font-size: 20px;
+  }
+  .link {
+    gap: 20px;
+  }
+}
+
+/* Small mobile */
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 25px 2%;
+  }
+  .text h2 {
+    font-size: 36px;
+  }
+  .text p {
+    font-size: 20px;
+  }
+  .link a {
+    font-size: 18px;
+  }
+  .link {
+    gap: 15px;
   }
 }

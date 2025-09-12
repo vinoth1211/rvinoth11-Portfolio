@@ -37,16 +37,35 @@
   text-decoration: none;
 }
 
+/* Tablet styles */
+@media screen and (max-width: 1024px) {
+  .navbar {
+    margin: 0 5%;
+  }
+  .title {
+    font-size: 28px;
+  }
+  .menuItems a {
+    font-size: 22px;
+  }
+}
+
+/* Mobile landscape */
 @media screen and (max-width: 830px) {
   .navbar {
     flex-direction: column;
     align-items: flex-start;
+    margin: 0 5%;
+  }
+
+  .title {
+    font-size: 24px;
   }
 
   .menu {
     position: absolute;
     right: 0;
-    margin-right: 10%;
+    margin-right: 5%;
     flex-direction: column;
     align-items: flex-end;
     gap: 11px;
@@ -77,5 +96,37 @@
   .menuOpen {
     display: flex;
     z-index: 1;
+  }
+}
+
+/* Mobile portrait */
+@media screen and (max-width: 640px) {
+  .navbar {
+    margin: 0 3%;
+  }
+  .title {
+    font-size: 20px;
+  }
+  .menuItems a {
+    font-size: 18px;
+  }
+  .menuItems {
+    padding: 20px 25px;
+  }
+}
+
+/* Small mobile */
+@media screen and (max-width: 480px) {
+  .navbar {
+    margin: 0 2%;
+  }
+  .title {
+    font-size: 18px;
+  }
+  .menuItems a {
+    font-size: 16px;
+  }
+  .menuItems {
+    padding: 16px 20px;
   }
 }
