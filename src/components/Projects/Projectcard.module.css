@@ -8,6 +8,49 @@
   box-shadow: 0 16px 14px 0 #04152d;
   padding: 18px 24px;
   max-width: 345px;
+  width: 100%;
+}
+
+/* Mobile responsive styles */
+@media screen and (max-width: 640px) {
+  .container {
+    max-width: 100%;
+    padding: 16px 20px;
+  }
+  .title {
+    font-size: 22px;
+  }
+  .description {
+    font-size: 20px;
+  }
+  .skill {
+    font-size: 20px;
+    padding: 2px 18px;
+  }
+  .link {
+    font-size: 24px;
+    padding: 1px 18px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 14px 16px;
+  }
+  .title {
+    font-size: 20px;
+  }
+  .description {
+    font-size: 18px;
+  }
+  .skill {
+    font-size: 18px;
+    padding: 2px 16px;
+  }
+  .link {
+    font-size: 20px;
+    padding: 1px 16px;
+  }
 }
 
 .image {
