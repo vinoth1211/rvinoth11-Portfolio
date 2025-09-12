@@ -101,7 +101,46 @@
   margin-left: 17px;
 }
 
+/* Tablet styles */
+@media screen and (max-width: 1024px) {
+  .container {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .title {
+    font-size: 30px;
+  }
+  .skillImageContainer {
+    width: 100px;
+    height: 100px;
+  }
+  .skillImageContainer img {
+    width: 60px;
+  }
+  .skill p {
+    font-size: 22px;
+  }
+  .historyItemDetails h3 {
+    font-size: 26px;
+  }
+  .historyItemDetails p {
+    font-size: 18px;
+  }
+  .historyItemDetails ul {
+    font-size: 22px;
+  }
+}
+
+/* Mobile landscape */
 @media screen and (max-width: 830px) {
+  .container {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .title {
+    font-size: 28px;
+    text-align: center;
+  }
   .content {
     flex-direction: column;
     align-items: center;
@@ -112,10 +151,115 @@
     width: 100%;
     flex-direction: row;
     justify-content: center;
+    gap: 25px;
+  }
+
+  .skillImageContainer {
+    width: 80px;
+    height: 80px;
+  }
+  .skillImageContainer img {
+    width: 50px;
+  }
+  .skill p {
+    font-size: 18px;
   }
 
   .history {
     width: 100%;
     gap: 9px;
+  }
+  .historyItem {
+    padding: 20px;
+  }
+  .historyItem img {
+    width: 80px;
+  }
+  .historyItemDetails h3 {
+    font-size: 22px;
+  }
+  .historyItemDetails p {
+    font-size: 16px;
+  }
+  .historyItemDetails ul {
+    font-size: 18px;
+  }
+}
+
+/* Mobile portrait */
+@media screen and (max-width: 640px) {
+  .container {
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+  .title {
+    font-size: 24px;
+  }
+  .skills {
+    gap: 20px;
+  }
+  .skillImageContainer {
+    width: 70px;
+    height: 70px;
+  }
+  .skillImageContainer img {
+    width: 45px;
+  }
+  .skill p {
+    font-size: 16px;
+  }
+  .historyItem {
+    padding: 16px;
+  }
+  .historyItem img {
+    width: 70px;
+  }
+  .historyItemDetails h3 {
+    font-size: 20px;
+  }
+  .historyItemDetails p {
+    font-size: 14px;
+  }
+  .historyItemDetails ul {
+    font-size: 16px;
+  }
+}
+
+/* Small mobile */
+@media screen and (max-width: 480px) {
+  .container {
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+  .title {
+    font-size: 20px;
+  }
+  .skills {
+    gap: 15px;
+  }
+  .skillImageContainer {
+    width: 60px;
+    height: 60px;
+  }
+  .skillImageContainer img {
+    width: 35px;
+  }
+  .skill p {
+    font-size: 14px;
+  }
+  .historyItem {
+    padding: 12px;
+  }
+  .historyItem img {
+    width: 60px;
+  }
+  .historyItemDetails h3 {
+    font-size: 18px;
+  }
+  .historyItemDetails p {
+    font-size: 12px;
+  }
+  .historyItemDetails ul {
+    font-size: 14px;
   }
 }
