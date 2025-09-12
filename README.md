@@ -9,6 +9,7 @@ A modern, responsive portfolio website built with React and Vite, showcasing my 
 - **Interactive Components**: Engaging user experience with dynamic sections
 - **Performance Optimized**: Built with Vite for fast loading and development
 - **SEO Friendly**: Proper meta tags and semantic HTML
+- **CV Download**: Direct download link for your resume/CV
 
 ## 🛠️ Tech Stack
 
