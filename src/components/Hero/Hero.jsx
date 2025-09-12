@@ -13,8 +13,12 @@ export const Hero = () => {
           <br /> studying Computing and Information Systems.
           <br /> Reach out if you’d like to learn more!
         </p>
-        <a href="mailto:vino6810403@gmail.com" className={styles.contactBtn}>
-          Contact Me
+        <a
+          href="/assets/cv/Vinoth_Rasamanickam_CV.pdf"
+          download="Vinoth_Rasamanickam_CV.pdf"
+          className={styles.contactBtn}
+        >
+          Download CV
         </a>
       </div>
       <img src={profile} alt="Hero Image of Me" className={styles.heroImg} />
