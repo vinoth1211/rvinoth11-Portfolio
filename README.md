@@ -1,138 +1,110 @@
-# My Portfolio
+# Vinoth Rasamanickam — Portfolio
 
-A modern, responsive portfolio website built with React and Vite, showcasing my professional journey, projects, and skills.
+A modern, responsive portfolio built with React 19, Vite, Tailwind CSS v4, and Framer Motion. Showcases projects, skills, experience, and contact information in a single-page layout with scroll-based navigation.
 
-## 🚀 Features
+## Features
 
-- **Modern Design**: Clean and professional UI with smooth animations
-- **Responsive Layout**: Optimized for all device sizes
-- **Interactive Components**: Engaging user experience with dynamic sections
-- **Performance Optimized**: Built with Vite for fast loading and development
-- **SEO Friendly**: Proper meta tags and semantic HTML
+- **Modern UI**: Glass sticky navbar, bento-style about section, featured project layout, and scroll reveal animations
+- **Responsive**: Mobile-first layout from 480px through desktop
+- **Accessible**: Skip link, semantic landmarks, keyboard focus styles, reduced-motion support
+- **SEO**: Meta description, Open Graph tags, and JSON-LD Person schema
+- **Fast builds**: Vite 6 with optimized asset bundling
 
-
-## 🛠️ Tech Stack
+## Tech stack
 
 - React 19
-- Vite
-- CSS Modules
-- ESLint
-- Custom Fonts (Outfit, Roboto)
+- Vite 6
+- Tailwind CSS v4 (`@tailwindcss/vite`)
+- Framer Motion
+- Lucide React (icons)
+- Outfit (via `@fontsource/outfit`)
+- ESLint 9
 
-## 📦 Project Structure
+## Project structure
 
 ```
 src/
-├── components/         # React components
-│   ├── About/         # About section
-│   ├── Contact/       # Contact section
-│   ├── Experience/    # Work experience
-│   ├── Hero/          # Landing section
-│   ├── Navbar/        # Navigation
-│   └── Projects/      # Portfolio projects
-├── data/              # Data files with proper asset imports
-│   ├── skills.js      # Skills data with image imports
-│   ├── projects.js    # Projects data with image imports
-│   └── history.js     # Work history data with image imports
-├── App.jsx           # Main application component
-├── main.jsx          # Application entry point
-├── App.module.css    # App component styles
-├── index.css         # Global styles
-└── vars.css          # CSS variables and theme
+├── components/
+│   ├── About/
+│   ├── Contact/
+│   ├── Experience/
+│   ├── Hero/
+│   ├── Navbar/
+│   ├── Projects/
+│   ├── Skills/
+│   └── ui/           # SectionHeading, Reveal
+├── data/
+│   ├── skills.js
+│   ├── projects.js
+│   └── history.js
+├── hooks/
+│   └── useActiveSection.js
+├── App.jsx
+├── main.jsx
+└── index.css         # Tailwind + theme tokens
+public/
+└── assets/cv/        # CV PDF for download
 ```
 
-## 🚀 Getting Started
+## Getting started
 
 ### Prerequisites
 
-- Node.js (Latest LTS version recommended)
-- npm or yarn
+- Node.js (LTS recommended)
+- npm
 
-### Installation
-
-1. Clone the repository
+### Install and run
 
 ```bash
-git clone https://github.com/yourusername/my-portfolio.git
-cd my-portfolio
-```
-
-2. Install dependencies
-
-```bash
+git clone https://github.com/vinoth1211/rvinoth11-Portfolio.git
+cd rvinoth11-Portfolio
 npm install
-```
-
-3. Start the development server
-
-```bash
 npm run dev
 ```
 
-4. Build for production
+### Scripts
 
-```bash
-npm run build
-```
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start dev server |
+| `npm run build` | Production build to `dist/` |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Run ESLint |
 
-## 📝 Available Scripts
+## Customization
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run lint` - Run ESLint
-- `npm run preview` - Preview production build
+1. **Copy & content**: Edit section components in `src/components/` (Hero, About, etc.)
+2. **Skills**: Update `src/data/skills.js` — import images from `assets/skills/`
+3. **Projects**: Update `src/data/projects.js` — set `featured: true` on one project; add live demo URLs when deployed
+4. **Experience**: Update `src/data/history.js` with roles, dates, and bullet points
+5. **Theme**: Adjust colors in `src/index.css` under `@theme`
+6. **CV**: Place `Vinoth_Rasamanickam_CV.pdf` in `public/assets/cv/`
 
-## 🎨 Customization
-
-1. **Personal Information**: Update your details in the respective component files
-2. **Skills & Projects**: Modify `src/data/skills.js` and `src/data/projects.js` to add/remove items
-3. **Work History**: Update `src/data/history.js` with your experience
-4. **Styling**: Modify CSS module files for component-specific styles
-5. **Theme**: Customize colors and fonts in `vars.css`
-6. **Images**: Add new images to the `assets/` folder and import them in the data files
-
-### Adding New Images
-
-When adding new images to your portfolio:
-
-1. Place the image in the appropriate `assets/` subfolder
-2. Import the image in the relevant data file (e.g., `skills.js`, `projects.js`)
-3. Use the imported variable in your data object
-
-Example:
+### Adding a skill
 
 ```javascript
-import newImage from "../../assets/skills/new-skill.png";
+import newImg from "../../assets/skills/new-skill.png";
 
 export const skills = [
-  // ... existing skills
-  {
-    title: "New Skill",
-    imageSrc: newImage,
-  },
+  // ...
+  { title: "New Skill", imageSrc: newImg },
 ];
 ```
 
-## 📄 License
+## Deployment
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Optimized for [Vercel](https://vercel.com):
 
-## 🚀 Deployment
+1. Run `npm run build`
+2. Connect the GitHub repo to Vercel
+3. Update `index.html` canonical and `og:url` to your live domain
 
-This portfolio is optimized for deployment on Vercel:
+## Contact
 
-1. **Build the project**: `npm run build`
-2. **Deploy to Vercel**: Connect your GitHub repository to Vercel
-3. **Automatic deployments**: Every push to main branch triggers a new deployment
+- **Email**: [vino6810403@gmail.com](mailto:vino6810403@gmail.com)
+- **LinkedIn**: [vinoth-rasamanickam](https://www.linkedin.com/in/vinoth-rasamanickam-537597302/)
+- **GitHub**: [vinoth1211](https://github.com/vinoth1211)
 
-### Image Optimization
+## License
 
-The project uses Vite's asset processing to ensure all images are properly optimized and referenced in production builds. Images are imported in JavaScript files rather than using relative paths in JSON files.
-
-## 👥 Contact
-
-**Vinoth Rasamanickam** - [LinkedIn](https://www.linkedin.com/in/vinoth-rasamanickam-537597302/)
-
-**Project Repository**: [GitHub](https://github.com/vinoth1211/rvinoth11-Portfolio.git)
-
-**Email**: vino6810403@gmail.com
+MIT — see [LICENSE](LICENSE).
