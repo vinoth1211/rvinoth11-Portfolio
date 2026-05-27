@@ -1,5 +1,5 @@
 import { MapPin, Code2, Layers, Users } from "lucide-react";
-import { about } from "../../data/site";
+import { useContent } from "../../hooks/useContent";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Reveal } from "../ui/Reveal";
 
@@ -11,6 +11,9 @@ const BENTO_ICONS = {
 };
 
 export function About() {
+  const { content } = useContent();
+  const about = content.about;
+
   return (
     <section
       id="about"

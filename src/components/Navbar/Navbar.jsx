@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { profile } from "../../data/site";
+import { useContent } from "../../hooks/useContent";
 import { useActiveSection } from "../../hooks/useActiveSection";
 
 const NAV_LINKS = [
@@ -14,6 +14,8 @@ const NAV_LINKS = [
 const SECTION_IDS = NAV_LINKS.map((link) => link.id);
 
 export function Navbar() {
+  const { content } = useContent();
+  const { profile } = content;
   const [menuOpen, setMenuOpen] = useState(false);
   const activeSection = useActiveSection(SECTION_IDS);
 

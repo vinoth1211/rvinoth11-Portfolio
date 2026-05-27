@@ -1,118 +1,82 @@
 # Vinoth Rasamanickam — Portfolio
 
-A modern, responsive portfolio built with React 19, Vite, Tailwind CSS v4, and Framer Motion. Showcases projects, skills, experience, and contact information in a single-page layout with scroll-based navigation.
+A modern, responsive portfolio built with React 19, Vite, Tailwind CSS v4, and Framer Motion. Content is loaded from JSON and editable through a visual admin at `/admin`.
 
 ## Features
 
-- **Modern UI**: Glass sticky navbar, bento-style about section, featured project layout, and scroll reveal animations
-- **Responsive**: Mobile-first layout from 480px through desktop
-- **Accessible**: Skip link, semantic landmarks, keyboard focus styles, reduced-motion support
-- **SEO**: Meta description, Open Graph tags, and JSON-LD Person schema
-- **Fast builds**: Vite 6 with optimized asset bundling
+- **Visual CMS**: Decap CMS admin at `/admin` (GitHub login)
+- **Runtime content**: `public/content/*.json` — update copy without changing components
+- **Modern UI**: Glass navbar, bento about section, featured projects, scroll animations
+- **Accessible**: Skip link, semantic HTML, reduced-motion support
+- **SEO**: Meta tags and JSON-LD in `index.html`
 
 ## Tech stack
 
-- React 19
-- Vite 6
-- Tailwind CSS v4 (`@tailwindcss/vite`)
-- Framer Motion
-- Lucide React (icons)
-- Outfit (via `@fontsource/outfit`)
-- ESLint 9
+- React 19 + Vite 6
+- Tailwind CSS v4
+- Framer Motion + Lucide React
+- Decap CMS (admin)
+- Vercel (deploy + OAuth API routes)
 
 ## Project structure
 
 ```
-src/
-├── components/
-│   ├── About/
-│   ├── Contact/
-│   ├── Experience/
-│   ├── Hero/
-│   ├── Navbar/
-│   ├── Projects/
-│   ├── Skills/
-│   └── ui/           # SectionHeading, Reveal
-├── data/
-│   ├── site.js         # Hero, About, Contact copy & links
-│   ├── skills.js
-│   ├── projects.js
-│   └── history.js
-├── hooks/
-│   └── useActiveSection.js
-├── App.jsx
-├── main.jsx
-└── index.css         # Tailwind + theme tokens
 public/
-└── assets/cv/        # CV PDF for download
+├── admin/           # Decap CMS (config.yml, index.html)
+├── content/         # site.json, projects.json, skills.json, history.json
+├── images/          # Static images for CMS paths
+├── uploads/         # Images uploaded via admin
+└── assets/cv/       # CV PDF
+
+src/
+├── context/ContentContext.jsx   # Fetches JSON content
+├── components/
+└── hooks/
+
+api/
+├── auth.js          # GitHub OAuth for Decap (Vercel)
+└── callback.js
 ```
 
 ## Getting started
 
-### Prerequisites
-
-- Node.js (LTS recommended)
-- npm
-
-### Install and run
-
 ```bash
-git clone https://github.com/vinoth1211/rvinoth11-Portfolio.git
-cd rvinoth11-Portfolio
 npm install
 npm run dev
 ```
 
-### Scripts
+Open `http://localhost:5173` for the portfolio.
+
+### Local admin (optional)
+
+See [DECAP_SETUP.md](DECAP_SETUP.md) for GitHub OAuth on Vercel, or use `npx decap-server` with `local_backend: true` in `public/admin/config.yml`.
+
+## Updating content
+
+| Method | When to use |
+|--------|-------------|
+| **`/admin`** | Visual forms, no code ([DECAP_SETUP.md](DECAP_SETUP.md)) |
+| **Edit JSON** | Direct edits in `public/content/` ([CONTENT_UPDATES.md](CONTENT_UPDATES.md)) |
+
+After any change: push to `main` → Vercel redeploys (~1–3 min).
+
+## Scripts
 
 | Command | Description |
 |---------|-------------|
-| `npm run dev` | Start dev server |
-| `npm run build` | Production build to `dist/` |
-| `npm run preview` | Preview production build |
-| `npm run lint` | Run ESLint |
+| `npm run dev` | Dev server |
+| `npm run build` | Production build |
+| `npm run preview` | Preview build |
+| `npm run lint` | ESLint |
 
-## Updating content after deployment
+## Deployment (Vercel)
 
-All editable content is in **`src/data/`** plus assets and `index.html` for SEO. After you change files, push to Git — Vercel rebuilds and deploys automatically.
-
-See **[CONTENT_UPDATES.md](CONTENT_UPDATES.md)** for the full content map, step-by-step playbooks, and post-update checklist.
-
-| File | What it controls |
-|------|------------------|
-| `src/data/site.js` | Hero, About, Contact (name, bio, email, social links, CV path) |
-| `src/data/projects.js` | Project cards |
-| `src/data/skills.js` | Skills grid |
-| `src/data/history.js` | Experience timeline |
-| `public/assets/cv/` | Downloadable CV PDF |
-
-## Customization
-
-1. **Profile copy**: Edit `src/data/site.js` (hero, about, contact)
-2. **Skills**: Update `src/data/skills.js` — import images from `assets/skills/`
-3. **Projects**: Update `src/data/projects.js` — set `featured: true` on one project; add live demo URLs when deployed
-4. **Experience**: Update `src/data/history.js` with roles, dates, and bullet points
-5. **Theme**: Adjust colors in `src/index.css` under `@theme`
-6. **CV**: Place `Vinoth_Rasamanickam_CV.pdf` in `public/assets/cv/` (path also set in `site.js`)
-
-### Adding a skill
-
-```javascript
-import newImg from "../../assets/skills/new-skill.png";
-
-export const skills = [
-  // ...
-  { title: "New Skill", imageSrc: newImg },
-];
-```
-
-## Deployment
-
-Optimized for [Vercel](https://vercel.com):
-
-1. Run `npm run build`
-2. Connect the GitHub repo to Vercel
-3. Update `index.html` canonical and `og:url` to your live domain
+1. Connect the GitHub repo to Vercel
+2. Set environment variables (see [DECAP_SETUP.md](DECAP_SETUP.md)):
+   - `GITHUB_CLIENT_ID`
+   - `GITHUB_CLIENT_SECRET`
+   - `SITE_URL` (your production URL)
+3. Deploy — visit `/admin` to manage content
 
 ## Contact
 

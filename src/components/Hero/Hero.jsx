@@ -1,7 +1,6 @@
 import { motion as Motion, useReducedMotion } from "framer-motion";
 import { ArrowDown, Download } from "lucide-react";
-import profileImage from "../../../assets/hero/heroImage.png";
-import { profile } from "../../data/site";
+import { useContent } from "../../hooks/useContent";
 
 const container = {
   hidden: {},
@@ -17,7 +16,7 @@ const item = {
   },
 };
 
-function HeroCopy({ tagline }) {
+function HeroCopy({ profile, tagline }) {
   return (
     <>
       <p className="mb-4 font-mono text-sm uppercase tracking-widest text-primary">
@@ -51,12 +50,12 @@ function HeroCopy({ tagline }) {
   );
 }
 
-function HeroPortrait() {
+function HeroPortrait({ profile }) {
   return (
     <div className="relative mx-auto w-full max-w-sm lg:max-w-md">
       <div className="relative rounded-2xl border border-white/10 bg-surface/40 p-2 shadow-2xl shadow-primary/10 ring-1 ring-white/5">
         <img
-          src={profileImage}
+          src={profile.heroImage}
           alt={profile.portraitAlt}
           className="w-full rounded-xl object-cover"
           width={400}
@@ -67,22 +66,24 @@ function HeroPortrait() {
   );
 }
 
-function HeroAnimated() {
+function HeroAnimated({ profile }) {
   return (
     <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
       <div className="flex flex-col items-start">
         <Motion.div variants={item}>
-          <HeroCopy tagline={profile.tagline} />
+          <HeroCopy profile={profile} tagline={profile.tagline} />
         </Motion.div>
       </div>
       <Motion.div variants={item}>
-        <HeroPortrait />
+        <HeroPortrait profile={profile} />
       </Motion.div>
     </div>
   );
 }
 
 export function Hero() {
+  const { content } = useContent();
+  const profile = content.profile;
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -96,9 +97,9 @@ export function Hero() {
       {prefersReducedMotion ? (
         <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="flex flex-col items-start">
-            <HeroCopy tagline={profile.taglineShort} />
+            <HeroCopy profile={profile} tagline={profile.taglineShort} />
           </div>
-          <HeroPortrait />
+          <HeroPortrait profile={profile} />
         </div>
       ) : (
         <Motion.div
@@ -107,7 +108,7 @@ export function Hero() {
           initial="hidden"
           animate="visible"
         >
-          <HeroAnimated />
+          <HeroAnimated profile={profile} />
         </Motion.div>
       )}
     </section>

@@ -5,8 +5,22 @@ import { Hero } from "./components/Hero/Hero";
 import { Navbar } from "./components/Navbar/Navbar";
 import { Projects } from "./components/Projects/Projects";
 import { Skills } from "./components/Skills/Skills";
+import { ContentError } from "./components/ui/ContentError";
+import { PageLoader } from "./components/ui/PageLoader";
+import { ContentProvider } from "./context/ContentContext";
+import { useContent } from "./hooks/useContent";
 
-function App() {
+function Portfolio() {
+  const { content, loading, error } = useContent();
+
+  if (loading) {
+    return <PageLoader />;
+  }
+
+  if (error || !content) {
+    return <ContentError message={error ?? "Content is unavailable."} />;
+  }
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-bg text-text">
       <a
@@ -25,6 +39,14 @@ function App() {
       </main>
       <Contact />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <ContentProvider>
+      <Portfolio />
+    </ContentProvider>
   );
 }
 

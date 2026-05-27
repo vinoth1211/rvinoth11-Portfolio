@@ -1,7 +1,7 @@
 import { ExternalLink, FolderGit2 } from "lucide-react";
 
 export function Projectcard({
-  project: { title, imageSrc, description, skills, demo, source },
+  project: { title, image, description, skills, demo, source },
   featured = false,
 }) {
   if (featured) {
@@ -9,7 +9,7 @@ export function Projectcard({
       <article className="group overflow-hidden rounded-2xl border border-white/10 bg-surface/60 transition-all hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10 lg:grid lg:grid-cols-2">
         <div className="relative aspect-video overflow-hidden bg-bg lg:aspect-auto lg:min-h-[280px]">
           <img
-            src={imageSrc}
+            src={image}
             alt={`Screenshot of ${title}`}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
@@ -43,7 +43,7 @@ export function Projectcard({
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-surface/60 transition-all hover:border-primary/40 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10">
       <div className="aspect-video overflow-hidden bg-bg">
         <img
-          src={imageSrc}
+          src={image}
           alt={`Screenshot of ${title}`}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />

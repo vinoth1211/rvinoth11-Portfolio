@@ -1,0 +1,161 @@
+# Decap CMS — visual editor for portfolio content
+# Setup: see DECAP_SETUP.md (GitHub OAuth required on Vercel)
+
+backend:
+  name: github
+  repo: vinoth1211/rvinoth11-Portfolio
+  branch: main
+  base_url: https://rvinoth11-portfolio.vercel.app
+  auth_endpoint: api/auth
+
+# Uncomment for local editing with: npx decap-server
+# local_backend: true
+
+media_folder: public/uploads
+public_folder: /uploads
+
+slug:
+  encoding: ascii
+  clean_ascii: true
+  sanitize_replacement: "-"
+
+collections:
+  - name: site
+    label: Site (Hero, About, Contact)
+    files:
+      - label: Site content
+        name: site
+        file: public/content/site.json
+        fields:
+          - label: Profile
+            name: profile
+            widget: object
+            fields:
+              - { label: Full name, name: fullName, widget: string }
+              - { label: First name, name: firstName, widget: string }
+              - { label: Eyebrow, name: eyebrow, widget: string }
+              - { label: Tagline, name: tagline, widget: text }
+              - { label: Short tagline, name: taglineShort, widget: text }
+              - { label: Portrait alt text, name: portraitAlt, widget: string }
+              - { label: Hero image, name: heroImage, widget: image, choose_url: false }
+              - { label: CV path, name: cvPath, widget: string, hint: "e.g. /assets/cv/Vinoth_Rasamanickam_CV.pdf" }
+              - { label: CV filename, name: cvFilename, widget: string }
+              - { label: Projects CTA, name: ctaProjects, widget: string }
+              - { label: CV CTA, name: ctaCv, widget: string }
+          - label: About
+            name: about
+            widget: object
+            fields:
+              - { label: Section label, name: label, widget: string }
+              - { label: Title, name: title, widget: string }
+              - label: Paragraphs
+                name: paragraphs
+                widget: list
+                field: { label: Paragraph, name: paragraph, widget: text }
+              - label: Highlight paragraph parts
+                name: paragraphWithHighlights
+                widget: list
+                fields:
+                  - { label: Text, name: text, widget: string }
+                  - { label: Bold emphasis, name: emphasis, widget: boolean, default: false }
+              - { label: Closing paragraph, name: closingParagraph, widget: text }
+              - label: Bento cards
+                name: bento
+                widget: list
+                fields:
+                  - { label: Icon key, name: icon, widget: select, options: [layers, code2, users, mapPin] }
+                  - { label: Title, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+          - label: Contact
+            name: contact
+            widget: object
+            fields:
+              - { label: Section label, name: label, widget: string }
+              - { label: Title, name: title, widget: string }
+              - { label: Description, name: description, widget: text }
+              - { label: Email, name: email, widget: string }
+              - { label: Email button text, name: ctaEmail, widget: string }
+              - { label: Footer note, name: footerNote, widget: string }
+              - label: Social links
+                name: links
+                widget: list
+                fields:
+                  - { label: Type, name: type, widget: select, options: [email, linkedin, github] }
+                  - { label: URL, name: href, widget: string, required: false }
+                  - { label: Accessible label, name: label, widget: string }
+          - label: Section headings
+            name: sections
+            widget: object
+            fields:
+              - label: Skills
+                name: skills
+                widget: object
+                fields:
+                  - { label: Label, name: label, widget: string }
+                  - { label: Title, name: title, widget: string }
+              - label: Experience
+                name: experience
+                widget: object
+                fields:
+                  - { label: Label, name: label, widget: string }
+                  - { label: Title, name: title, widget: string }
+              - label: Projects
+                name: projects
+                widget: object
+                fields:
+                  - { label: Label, name: label, widget: string }
+                  - { label: Title, name: title, widget: string }
+
+  - name: projects
+    label: Projects
+    files:
+      - label: All projects
+        name: projects
+        file: public/content/projects.json
+        fields:
+          - label: Projects
+            name: projects
+            widget: list
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Image, name: image, widget: image }
+              - { label: Description, name: description, widget: text }
+              - { label: Skills, name: skills, widget: list, field: { label: Skill, name: skill, widget: string } }
+              - { label: Demo URL, name: demo, widget: string }
+              - { label: Source URL, name: source, widget: string }
+              - { label: Featured, name: featured, widget: boolean, default: false }
+
+  - name: skills
+    label: Skills
+    files:
+      - label: All skills
+        name: skills
+        file: public/content/skills.json
+        fields:
+          - label: Skills
+            name: skills
+            widget: list
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Icon image, name: image, widget: image }
+
+  - name: experience
+    label: Experience
+    files:
+      - label: Timeline
+        name: history
+        file: public/content/history.json
+        fields:
+          - label: Entries
+            name: history
+            widget: list
+            fields:
+              - { label: Role, name: role, widget: string }
+              - { label: Organization, name: organization, widget: string }
+              - { label: Start date, name: startDate, widget: string }
+              - { label: End date, name: endDate, widget: string }
+              - label: Bullet points
+                name: experiences
+                widget: list
+                field: { label: Point, name: point, widget: string }
+              - { label: Logo image, name: image, widget: image }

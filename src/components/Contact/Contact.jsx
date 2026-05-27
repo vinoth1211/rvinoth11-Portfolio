@@ -1,5 +1,5 @@
 import { FolderGit2, Link2, Mail } from "lucide-react";
-import { contact, profile } from "../../data/site";
+import { useContent } from "../../hooks/useContent";
 import { Reveal } from "../ui/Reveal";
 
 const LINK_ICONS = {
@@ -8,14 +8,16 @@ const LINK_ICONS = {
   github: FolderGit2,
 };
 
-function getLinkHref(link) {
+function getLinkHref(link, email) {
   if (link.type === "email") {
-    return `mailto:${contact.email}`;
+    return `mailto:${email}`;
   }
   return link.href;
 }
 
 export function Contact() {
+  const { content } = useContent();
+  const { profile, contact } = content;
   const mailto = `mailto:${contact.email}`;
 
   return (
@@ -48,7 +50,7 @@ export function Contact() {
 
             <div className="flex flex-wrap items-center justify-center gap-4">
               {contact.links.map((link) => {
-                const href = getLinkHref(link);
+                const href = getLinkHref(link, contact.email);
                 const SocialIcon = LINK_ICONS[link.type];
                 const isMailto = link.type === "email";
 

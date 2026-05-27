@@ -1,9 +1,11 @@
-import { projects } from "../../data/projects";
+import { useContent } from "../../hooks/useContent";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Reveal } from "../ui/Reveal";
 import { Projectcard } from "./Projectcard";
 
 export function Projects() {
+  const { content } = useContent();
+  const { projects, sections } = content;
   const featured = projects.find((p) => p.featured) ?? projects[0];
   const rest = projects.filter((p) => p !== featured);
 
@@ -17,16 +19,18 @@ export function Projects() {
         <Reveal>
           <SectionHeading
             id="projects-heading"
-            label="04 — Projects"
-            title="Selected work"
+            label={sections.projects.label}
+            title={sections.projects.title}
           />
         </Reveal>
 
-        <Reveal delay={0.1}>
-          <div className="mb-10">
-            <Projectcard project={featured} featured />
-          </div>
-        </Reveal>
+        {featured && (
+          <Reveal delay={0.1}>
+            <div className="mb-10">
+              <Projectcard project={featured} featured />
+            </div>
+          </Reveal>
+        )}
 
         <div className="grid gap-6 md:grid-cols-2">
           {rest.map((project, index) => (

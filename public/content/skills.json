@@ -1,0 +1,12 @@
+{
+  "skills": [
+    { "title": "HTML", "image": "/images/skills/html.png" },
+    { "title": "CSS", "image": "/images/skills/css.png" },
+    { "title": "JavaScript", "image": "/images/skills/javascript.png" },
+    { "title": "React", "image": "/images/skills/react.png" },
+    { "title": "My SQL", "image": "/images/skills/mysql.png" },
+    { "title": "Tailwind", "image": "/images/skills/tailwind.png" },
+    { "title": "MongoDB", "image": "/images/skills/mongodb.png" },
+    { "title": "Figma", "image": "/images/skills/figma.png" }
+  ]
+}

@@ -1,8 +1,11 @@
-import { skills } from "../../data/skills";
+import { useContent } from "../../hooks/useContent";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Reveal } from "../ui/Reveal";
 
 export function Skills() {
+  const { content } = useContent();
+  const { skills, sections } = content;
+
   return (
     <section
       id="skills"
@@ -13,8 +16,8 @@ export function Skills() {
         <Reveal>
           <SectionHeading
             id="skills-heading"
-            label="02 — Skills"
-            title="Tools I work with"
+            label={sections.skills.label}
+            title={sections.skills.title}
           />
         </Reveal>
 
@@ -24,7 +27,7 @@ export function Skills() {
               <article className="flex flex-col items-center gap-3 rounded-2xl border border-white/10 bg-surface/50 p-5 text-center transition-all hover:border-primary/40 hover:bg-surface hover:-translate-y-1">
                 <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-bg/80 p-2">
                   <img
-                    src={skill.imageSrc}
+                    src={skill.image}
                     alt=""
                     className="h-10 w-10 object-contain"
                     aria-hidden

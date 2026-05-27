@@ -1,8 +1,11 @@
-import { history } from "../../data/history";
+import { useContent } from "../../hooks/useContent";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Reveal } from "../ui/Reveal";
 
 export function Experience() {
+  const { content } = useContent();
+  const { history, sections } = content;
+
   return (
     <section
       id="experience"
@@ -13,8 +16,8 @@ export function Experience() {
         <Reveal>
           <SectionHeading
             id="experience-heading"
-            label="03 — Experience"
-            title="Where I've been learning"
+            label={sections.experience.label}
+            title={sections.experience.title}
           />
         </Reveal>
 
@@ -29,9 +32,9 @@ export function Experience() {
                 <article className="rounded-2xl border border-white/10 bg-surface/60 p-6 transition-all hover:border-primary/30 hover:bg-surface md:p-8">
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
                     <img
-                      src={entry.imageSrc}
+                      src={entry.image}
                       alt=""
-                      className="h-14 w-14 shrink-0 rounded-xl object-contain bg-bg/50 p-1"
+                      className="h-14 w-14 shrink-0 rounded-xl bg-bg/50 object-contain p-1"
                       aria-hidden
                     />
                     <div className="min-w-0 flex-1">
