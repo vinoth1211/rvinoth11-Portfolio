@@ -1,25 +1,23 @@
 import { FolderGit2, Link2, Mail } from "lucide-react";
+import { contact, profile } from "../../data/site";
 import { Reveal } from "../ui/Reveal";
 
-const LINKS = [
-  {
-    href: "mailto:vinothrasamanickam@gmail.com",
-    label: "Email Vinoth",
-    icon: Mail,
-  },
-  {
-    href: "https://www.linkedin.com/in/vinoth-rasamanickam-537597302/",
-    label: "LinkedIn profile",
-    icon: Link2,
-  },
-  {
-    href: "https://github.com/vinoth1211",
-    label: "GitHub profile",
-    icon: FolderGit2,
-  },
-];
+const LINK_ICONS = {
+  email: Mail,
+  linkedin: Link2,
+  github: FolderGit2,
+};
+
+function getLinkHref(link) {
+  if (link.type === "email") {
+    return `mailto:${contact.email}`;
+  }
+  return link.href;
+}
 
 export function Contact() {
+  const mailto = `mailto:${contact.email}`;
+
   return (
     <footer
       id="contact"
@@ -30,43 +28,47 @@ export function Contact() {
         <Reveal>
           <div className="text-center">
             <p className="mb-2 font-mono text-sm uppercase tracking-widest text-primary">
-              05 — Contact
+              {contact.label}
             </p>
             <h2
               id="contact-heading"
               className="mb-4 text-3xl font-bold text-text md:text-4xl"
             >
-              Let&apos;s work together
+              {contact.title}
             </h2>
             <p className="mx-auto mb-8 max-w-lg text-text-muted">
-              Open to internships, collaborations, and feedback on my projects.
-              Reach out — I typically respond within a few days.
+              {contact.description}
             </p>
             <a
-              href="mailto:vinothrasamanickam@gmail.com"
+              href={mailto}
               className="mb-10 inline-flex rounded-full bg-primary px-8 py-3 text-sm font-semibold text-text transition-all hover:bg-primary-hover hover:-translate-y-0.5 focus-visible:rounded-full"
             >
-              Send an email
+              {contact.ctaEmail}
             </a>
 
             <div className="flex flex-wrap items-center justify-center gap-4">
-              {LINKS.map(({ href, label, icon: SocialIcon }) => (
-                <a
-                  key={href}
-                  href={href}
-                  target={href.startsWith("mailto") ? undefined : "_blank"}
-                  rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-                  aria-label={label}
-                  className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-surface/60 text-text-muted transition-all hover:border-primary/50 hover:bg-surface hover:text-primary focus-visible:rounded-full"
-                >
-                  <SocialIcon size={22} aria-hidden />
-                </a>
-              ))}
+              {contact.links.map((link) => {
+                const href = getLinkHref(link);
+                const SocialIcon = LINK_ICONS[link.type];
+                const isMailto = link.type === "email";
+
+                return (
+                  <a
+                    key={link.type}
+                    href={href}
+                    target={isMailto ? undefined : "_blank"}
+                    rel={isMailto ? undefined : "noopener noreferrer"}
+                    aria-label={link.label}
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-surface/60 text-text-muted transition-all hover:border-primary/50 hover:bg-surface hover:text-primary focus-visible:rounded-full"
+                  >
+                    {SocialIcon && <SocialIcon size={22} aria-hidden />}
+                  </a>
+                );
+              })}
             </div>
 
             <p className="mt-12 text-sm text-text-muted">
-              © {new Date().getFullYear()} Vinoth Rasamanickam. Built with React
-              &amp; Tailwind.
+              © {new Date().getFullYear()} {profile.fullName}. {contact.footerNote}
             </p>
           </div>
         </Reveal>

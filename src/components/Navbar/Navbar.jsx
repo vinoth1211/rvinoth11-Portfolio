@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { profile } from "../../data/site";
 import { useActiveSection } from "../../hooks/useActiveSection";
 
 const NAV_LINKS = [
@@ -49,8 +50,8 @@ export function Navbar() {
           ))}
           <li>
             <a
-              href="/assets/cv/Vinoth_Rasamanickam_CV.pdf"
-              download="Vinoth_Rasamanickam_CV.pdf"
+              href={profile.cvPath}
+              download={profile.cvFilename}
               className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-text transition-colors hover:bg-primary-hover focus-visible:rounded-full"
             >
               Resume
@@ -93,8 +94,8 @@ export function Navbar() {
         ))}
         <li>
           <a
-            href="/assets/cv/Vinoth_Rasamanickam_CV.pdf"
-            download="Vinoth_Rasamanickam_CV.pdf"
+            href={profile.cvPath}
+            download={profile.cvFilename}
             className="mt-2 block rounded-full bg-primary px-4 py-2.5 text-center text-sm font-semibold text-text"
             onClick={closeMenu}
           >

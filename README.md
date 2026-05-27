@@ -34,6 +34,7 @@ src/
 │   ├── Skills/
 │   └── ui/           # SectionHeading, Reveal
 ├── data/
+│   ├── site.js         # Hero, About, Contact copy & links
 │   ├── skills.js
 │   ├── projects.js
 │   └── history.js
@@ -71,14 +72,28 @@ npm run dev
 | `npm run preview` | Preview production build |
 | `npm run lint` | Run ESLint |
 
+## Updating content after deployment
+
+All editable content is in **`src/data/`** plus assets and `index.html` for SEO. After you change files, push to Git — Vercel rebuilds and deploys automatically.
+
+See **[CONTENT_UPDATES.md](CONTENT_UPDATES.md)** for the full content map, step-by-step playbooks, and post-update checklist.
+
+| File | What it controls |
+|------|------------------|
+| `src/data/site.js` | Hero, About, Contact (name, bio, email, social links, CV path) |
+| `src/data/projects.js` | Project cards |
+| `src/data/skills.js` | Skills grid |
+| `src/data/history.js` | Experience timeline |
+| `public/assets/cv/` | Downloadable CV PDF |
+
 ## Customization
 
-1. **Copy & content**: Edit section components in `src/components/` (Hero, About, etc.)
+1. **Profile copy**: Edit `src/data/site.js` (hero, about, contact)
 2. **Skills**: Update `src/data/skills.js` — import images from `assets/skills/`
 3. **Projects**: Update `src/data/projects.js` — set `featured: true` on one project; add live demo URLs when deployed
 4. **Experience**: Update `src/data/history.js` with roles, dates, and bullet points
 5. **Theme**: Adjust colors in `src/index.css` under `@theme`
-6. **CV**: Place `Vinoth_Rasamanickam_CV.pdf` in `public/assets/cv/`
+6. **CV**: Place `Vinoth_Rasamanickam_CV.pdf` in `public/assets/cv/` (path also set in `site.js`)
 
 ### Adding a skill
 
