@@ -53,6 +53,7 @@ Comment out `local_backend` before deploying to production.
 
 | Issue | Fix |
 |-------|-----|
+| `Failed to load config.yml (404)` | Hard-refresh (Ctrl+Shift+R). Open `/admin` or `/admin/` — config must load from `/admin/config.yml` (check Network tab). |
 | Login fails | Check OAuth callback URL matches `/api/callback` exactly |
 | Save fails | Confirm GitHub token has `repo` scope; repo name in `config.yml` is correct |
 | Site shows old content | Wait for Vercel deploy; hard-refresh the portfolio |
